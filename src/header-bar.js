@@ -1,11 +1,11 @@
 /* eslint no-unused-vars: 0 */
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import AppContext from "./context";
 
 export default () => {
-  const { actions, shoppingCart, totalCartPrice, products } =
-    useContext(AppContext);
-  const [input, setInput] = useState("");
+  const [input, setInput] = React.useState("");
+  const { actions, totalCartPrice } = useContext(AppContext);
+
   const handleChange = (e) => {
     setInput(e.target.value);
   };
@@ -15,16 +15,17 @@ export default () => {
   }, [input]);
 
   return (
-    <>
+    <div className="header-bar">
       <input
         type="text"
-        name="input"
-        autoComplete="off"
         value={input}
-        onChange={(e) => handleChange(e)}
-        style={{ height: "1.5rem", width: "20rem", marginTop: "1rem" }}
+        onChange={handleChange}
+        style={{ width: 600, height: 30 }}
       />
-      <p> Total: $ {totalCartPrice}</p>
-    </>
+      <p style={{ display: "flex", alignitems: "center" }}>
+        {" "}
+        Total: $ {totalCartPrice}{" "}
+      </p>
+    </div>
   );
 };

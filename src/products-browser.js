@@ -4,7 +4,6 @@ import ProductTile from "./product-tile";
 
 export default () => {
   const { filteredProduct } = React.useContext(AppContext);
-  console.log(filteredProduct);
   return (
     <div className="products-browser">
       {filteredProduct.map((product) => (
